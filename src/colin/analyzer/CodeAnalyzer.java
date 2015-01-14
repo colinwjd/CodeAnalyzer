@@ -3,8 +3,6 @@ package colin.analyzer;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
 
 import colin.model.LineWidthHistorgram;
 
@@ -22,22 +20,6 @@ public class CodeAnalyzer {
 
 	public CodeAnalyzer() {
 		lineWidthHistorgram = new LineWidthHistorgram();
-	}
-
-	public static List<File> findJavaFiles(File parentDirectory) {
-		List<File> files = new ArrayList<File>();
-		findJavaFiles(parentDirectory, files);
-		return files;
-	}
-
-	private static void findJavaFiles(File parentDirectory, List<File> files) {
-		for (File file : parentDirectory.listFiles()) {
-			if (file.getName().endsWith(".java")) {
-				files.add(file);
-			} else if (file.isDirectory()) {
-				findJavaFiles(file, files);
-			}
-		}
 	}
 
 	public void analyzeFile(File javaFile) throws Exception {
